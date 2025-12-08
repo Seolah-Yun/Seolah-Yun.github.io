@@ -1,10 +1,3 @@
-// typeit
-//   .type("어서오세요! 환영합니다.<br/>")
-//   .pause(500)
-//   .type("지금부터 제 소개를 시작하겠습니다!")
-//   .pause(500)
-//   .go();
-
 //floatingButton 작동함수
 
 function handleFloatingButton() {
