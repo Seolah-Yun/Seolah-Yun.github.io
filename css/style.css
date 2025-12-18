@@ -630,7 +630,7 @@ main {
 /* project */
 
 :root {
-  --project-title-height: 12rem;
+  --project-title-height: clamp(5rem, 12vw, 200px);
 }
 
 .project {
@@ -638,77 +638,29 @@ main {
   scroll-margin-top: var(--header-height);
 }
 
+.project__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-2);
+}
+
 .project__title {
   color: var(--white-color);
-  padding: var(--spacing-2) 0;
+  padding: var(--spacing-1) 0;
   text-align: left;
   font-size: var(--project-title-height);
   font-weight: var(--font-weight-bold);
   font-family: var(--main-font);
-  margin-bottom: var(--spacing-1);
 }
 
 .project__data {
-  margin: var(--spacing-2) auto;
-  overflow: hidden;
-  display: flex;
-  --webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    rgb(255, 255, 255) 2%,
-    rgb(255, 255, 255) 98%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    rgb(255, 255, 255) 2%,
-    rgb(255, 255, 255) 98%,
-    transparent
-  );
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  > * {
-    flex: 0 0 100%;
-  }
-  &:hover .project__group {
-    animation-play-state: paused;
-  }
-}
-
-.project__group {
-  display: flex;
+  margin: var(--spacing-5) 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  padding-right: var(--spacing-2);
-  will-change: transform;
-  animation: scrolling 15s linear infinite;
-}
-
-.project__block {
-  width: 100%;
-  min-height: 350px;
-  background-color: rgba(27, 27, 27, 0.413);
-  border-radius: 25px;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: var(--spacing-1) var(--spacing-0);
-  color: var(--white-color);
-  font-weight: var(--font-weight-light);
-}
-
-.project__block:hover {
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-  font-weight: var(--font-weight-bold);
-  transition: all 0.3s ease;
-}
-
-.project__text {
-  font-size: var(--font-size-4);
-  font-family: var(--point-font);
-  margin: var(--spacing-0) var(--spacing-2);
 }
 
 .project__text > p {
@@ -719,7 +671,41 @@ main {
 }
 
 .project__img {
-  margin: var(--spacing-2) 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+  /* 가로세로 비율 고정 */
+}
+.flip-effect {
+  perspective: 1000px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+.flip-effect img {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-effect:hover {
+  color: none;
+  opacity: 1;
+}
+.flip-effect:hover img {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* 접근성 고려 효과 없애기*/
+  .flip-effect:hover img {
+    transform: none;
+  }
 }
 
 /* thk */
@@ -1002,31 +988,7 @@ show 클래스를 설정하고 우선적용하기 위해 important 규칙 적용
   .about__text_R {
     padding: var(--spacing-0);
   }
-  /* project */
-  .project__title {
-    font-size: 5rem;
-    padding: var(--spacing-2);
-  }
-  .project__data {
-    gap: 1.5rem;
-    overflow: hidden;
-    width: 100%;
-  }
-  .project__block {
-    width: auto;
-    min-height: 250px;
-    transition: all 0.5s ease;
-  }
 
-  .project__img {
-    margin: var(--spacing-1);
-    width: 280px;
-    height: auto;
-  }
-  .project__text {
-    margin: var(--spacing-1);
-    font-size: var(--font-size-4);
-  }
   .thk {
     width: 100%;
     margin: var(--spacing-5) 0;
@@ -1109,45 +1071,14 @@ show 클래스를 설정하고 우선적용하기 위해 important 규칙 적용
     padding: var(--spacing-1);
   }
 
-  .project {
-    min-height: 100vh;
-    height: auto;
-  }
-
   .project__title {
-    font-size: var(--font-size-1);
-    padding: var(--spacing-2);
-    margin: 0;
+    padding: var(--spacing-2) 0;
   }
   .project__data {
-    gap: 1.5rem;
-    overflow: hidden;
-    width: 100%;
-  }
-  .group__hidden {
-    display: none;
-  }
-  .project__group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-  .project__block {
-    width: auto;
-    margin: var(--spacing-1) var(--spacing-2);
-    min-width: 100px;
   }
 
-  .project__img {
-    margin: var(--spacing-1);
-    width: 80%;
-  }
-  .project__text {
-    margin: var(--spacing-1);
-    font-size: var(--font-size-4);
-  }
   .thk__text {
     font-size: var(--font-size-5);
     line-height: 25px;
