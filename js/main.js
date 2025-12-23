@@ -20,8 +20,8 @@ const scrollReveal = ScrollReveal({
   delay: 200,
 });
 
-scrollReveal.reveal(".home__content, .thk, .horizontal-data");
-scrollReveal.reveal(".home__img", { delay: 400 });
+scrollReveal.reveal(".home__content, .thk, .horizontal-data, .project__title");
+scrollReveal.reveal(".home__img, .project__data", { delay: 400 });
 
 //가로스크롤
 
