@@ -659,8 +659,8 @@ main {
 .project__data {
   margin: var(--spacing-5) 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .project__text > p {
