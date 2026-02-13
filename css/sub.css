@@ -30,22 +30,3 @@ main {
   height: auto;
   object-fit: cover;
 }
-
-/* thk */
-
-@media only screen and (max-width: 800px) {
-  /* footer */
-  .footer__thk {
-    font-size: var(--font-size-1);
-    margin-top: var(--spacing-1);
-  }
-  .footer__contact-text {
-    font-size: var(--font-size-5);
-  }
-  .footer__nav-list {
-    flex-direction: column;
-  }
-  .footer__nav a {
-    padding: var(--spacing-1);
-  }
-}
